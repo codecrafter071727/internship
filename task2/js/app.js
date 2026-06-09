@@ -6,32 +6,32 @@ import { initGenerator } from './chapter-generator.js';
 const VIDEOS = [
     {
         id: 'RJTCAL1DRro',
-        title: 'Modern Web Development',
+        title: 'L30 Penthouse | Pursuit of a Radical Rhapsody',
         chapters: [
-            { time: 0, title: 'Introduction' },
-            { time: 45, title: 'Architecture Setup' },
-            { time: 120, title: 'Component Design' },
-            { time: 200, title: 'Final Review' }
+            { time: 0, title: 'Opening View' },
+            { time: 48, title: 'Arrival Experience' },
+            { time: 132, title: 'Interior Highlights' },
+            { time: 248, title: 'Final Walkthrough' }
         ]
     },
     {
         id: 'jj_aUFX8SV8',
-        title: 'Mastering JavaScript',
+        title: 'After the Rain | Total Environment',
         chapters: [
             { time: 0, title: 'Welcome' },
-            { time: 60, title: 'Advanced Scoping' },
-            { time: 180, title: 'Async Patterns' },
-            { time: 300, title: 'Performance' }
+            { time: 42, title: 'Landscape Approach' },
+            { time: 108, title: 'Design Details' },
+            { time: 192, title: 'Closing Frames' }
         ]
     },
     {
         id: 'xmmxkmVSiq0',
-        title: 'UI/UX Principles',
+        title: 'V40 Courtyard Homes | Total Environment',
         chapters: [
-            { time: 0, title: 'Overview' },
-            { time: 90, title: 'Color Theory' },
-            { time: 210, title: 'Typography' },
-            { time: 350, title: 'Final Summary' }
+            { time: 0, title: 'Project Overview' },
+            { time: 36, title: 'Facade Details' },
+            { time: 88, title: 'Courtyard Spaces' },
+            { time: 146, title: 'Closing View' }
         ]
     }
 ];
@@ -40,14 +40,26 @@ let mainPlayer = null;
 let previewPlayer = null;
 let trackingInterval = null;
 
+function setMobileToggleState(isPlaying) {
+    const button = document.getElementById('mobile-video-toggle');
+    if (!button) return;
+
+    button.innerHTML = isPlaying
+        ? '<i class="fas fa-pause"></i><span>Pause Video</span>'
+        : '<i class="fas fa-play"></i><span>Play Video</span>';
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     await loadYouTubeAPI();
+
+    const mobileToggleButton = document.getElementById('mobile-video-toggle');
 
     // 1. Setup Carousel
     const carousel = new VideoCarousel(VIDEOS, (video) => {
         if (mainPlayer) {
             mainPlayer.loadVideoById(video.id);
             renderChapters('chapters-list', video.chapters, (time) => mainPlayer.seekTo(time));
+            setMobileToggleState(false);
         }
     });
 
@@ -56,12 +68,27 @@ document.addEventListener('DOMContentLoaded', async () => {
     mainPlayer = await createPlayer('player', initialVideo.id, (e) => {
         if (e.data === YT.PlayerState.PLAYING) {
             startTracking('chapters-list', mainPlayer);
+            setMobileToggleState(true);
         } else {
             stopTracking();
+            if (e.data === YT.PlayerState.PAUSED || e.data === YT.PlayerState.ENDED || e.data === YT.PlayerState.CUED) {
+                setMobileToggleState(false);
+            }
         }
     });
 
     renderChapters('chapters-list', initialVideo.chapters, (time) => mainPlayer.seekTo(time));
+
+    mobileToggleButton.onclick = () => {
+        if (!mainPlayer || !mainPlayer.getPlayerState) return;
+
+        const state = mainPlayer.getPlayerState();
+        if (state === YT.PlayerState.PLAYING) {
+            mainPlayer.pauseVideo();
+        } else {
+            mainPlayer.playVideo();
+        }
+    };
 
     // 3. Setup Chapter Generator
     initGenerator(async (videoId, chapters) => {
