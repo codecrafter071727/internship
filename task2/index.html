@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Carousel & Chapter Generator - Task 2</title>
+    <link rel="stylesheet" href="css/task2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="../index.html"><i class="fas fa-home"></i> Back to Home</a>
+        </nav>
+
+        <header>
+            <h1>Video Carousel</h1>
+            <p>Interactive player with manual chapters and switching.</p>
+        </header>
+
+        <!-- Video Carousel Section -->
+        <section class="carousel-section">
+            <div class="carousel-container">
+                <div class="video-main">
+                    <div id="player-wrapper">
+                        <div id="player"></div>
+                    </div>
+                    <div class="carousel-controls">
+                        <button id="prev-btn" class="nav-btn"><i class="fas fa-chevron-left"></i> Prev</button>
+                        <h2 id="video-title">Loading...</h2>
+                        <button id="next-btn" class="nav-btn">Next <i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="chapters-sidebar">
+                    <h3>Video Chapters</h3>
+                    <ul id="chapters-list">
+                        <!-- Chapters injected here -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter Generator Section -->
+        <section class="generator-section">
+            <div class="section-header">
+                <h2>Automatic Chapter Generator</h2>
+                <p>Enter a YouTube URL to simulate AI-powered chapter generation.</p>
+            </div>
+            
+            <div class="generator-box">
+                <div class="input-group">
+                    <input type="text" id="yt-url" placeholder="https://www.youtube.com/watch?v=...">
+                    <button id="generate-btn" class="btn">Generate Chapters</button>
+                </div>
+                <p id="error-msg" class="error hidden"></p>
+
+                <div id="loading-state" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Analyzing video content...</p>
+                </div>
+
+                <div id="generator-result" class="hidden">
+                    <div class="preview-container">
+                        <div id="preview-player-wrapper">
+                            <div id="preview-player"></div>
+                        </div>
+                        <div class="generated-chapters">
+                            <h3>AI Generated Chapters</h3>
+                            <ul id="generated-list">
+                                <!-- Generated chapters here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="empty-state" class="empty-state">
+                    <i class="fas fa-magic"></i>
+                    <p>Enter a URL above to see the magic happen.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

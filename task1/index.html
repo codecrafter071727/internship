@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exclusive Privileges - Task 1</title>
+    <link rel="stylesheet" href="css/task1.css">
+</head>
+<body>
+    <div class="main-wrapper">
+        <nav class="breadcrumb">
+            <a href="../index.html">← Back to Home</a>
+        </nav>
+
+        <section class="exclusive-section">
+            <h2 class="section-title">Exclusive Privileges</h2>
+            
+            <div class="carousel-container">
+                <button class="nav-btn prev" id="prev-btn">
+                    <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                </button>
+                
+                <div class="carousel-viewport">
+                    <div class="carousel-track" id="carousel-track">
+                        <!-- Card 1: Reliance Digital -->
+                        <div class="card-slide">
+                            <div class="card reliance">
+                                <div class="card-pattern"></div>
+                                <div class="card-content">
+                                    <span class="prefix">Get</span>
+                                    <h3 class="highlight-text">ACTIVATION VOUCHER</h3>
+                                    <p class="sub-text">with up to</p>
+                                    <p class="value">₹1,500/- off*.</p>
+                                    <div class="logo-box">
+                                        <div class="reliance-logo">Reliance<span>digital</span></div>
+                                        <p class="tagline">PERSONALISING TECHNOLOGY</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: BookMyShow -->
+                        <div class="card-slide">
+                            <div class="card bms">
+                                <div class="card-pattern"></div>
+                                <div class="card-content">
+                                    <h3 class="highlight-text">ENJOY BENEFITS</h3>
+                                    <p class="sub-text">worth up to</p>
+                                    <p class="value">₹500/- off*</p>
+                                    <p class="sub-text">on your tickets.</p>
+                                    <div class="logo-box">
+                                        <div class="bms-logo">book<span>my</span>show</div>
+                                    </div>
+                                    <p class="disclaimer">*available on selected cards</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Apple -->
+                        <div class="card-slide">
+                            <div class="card apple">
+                                <div class="card-pattern"></div>
+                                <div class="card-content">
+                                    <span class="prefix">Avail</span>
+                                    <h3 class="highlight-text">APPLE OFFER</h3>
+                                    <p class="sub-text">with up to</p>
+                                    <p class="value">₹7,000/- off</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Ixigo -->
+                        <div class="card-slide">
+                            <div class="card ixigo">
+                                <div class="card-pattern"></div>
+                                <div class="card-content">
+                                    <span class="prefix">Get</span>
+                                    <h3 class="highlight-text">ACTIVATION VOUCHER</h3>
+                                    <p class="sub-text">with</p>
+                                    <p class="value">Flat ₹1,200/- off.</p>
+                                    <div class="logo-box">
+                                        <div class="ixigo-logo">ixigo</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="nav-btn next" id="next-btn">
+                    <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                </button>
+            </div>
+
+            <div class="pagination" id="pagination"></div>
+        </section>
+    </div>
+
+    <script src="js/task1.js"></script>
+</body>
+</html>
